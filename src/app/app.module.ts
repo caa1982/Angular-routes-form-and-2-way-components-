@@ -8,17 +8,30 @@ import { MySignupFormComponent } from './my-signup-form/my-signup-form.component
 import { QuoteComponent } from './quote/quote.component';
 import { QuoteItemsComponent } from './quote-items/quote-items.component';
 
+import { Routes, RouterModule } from '@angular/router';
+import { MyHomeComponent } from './my-home/my-home.component';
+import { MyAboutComponent } from './my-about/my-about.component';
+
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home/:id',  component: MyHomeComponent },
+  { path: 'about', component: MyAboutComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
     MySignupFormComponent,
     QuoteComponent,
-    QuoteItemsComponent
+    QuoteItemsComponent,
+    MyHomeComponent,
+    MyAboutComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routes) //  <!-- "routes" is the array defined above
   ],
   providers: [],
   bootstrap: [AppComponent]
